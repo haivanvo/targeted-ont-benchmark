@@ -18,13 +18,13 @@ The aim of this project is to systematically evaluate and compare different vari
 ---
 
 ## Tools and dependencies
-1. **Data simulation**: SimuG (version), NanoSim (version).
+1. **Data simulation**: SimuG (version), NanoSim (version), BEDtools (v2.31.1).
 2. **Preprocessing**:
    - QC: NanoStat (version)
    - Filtering: Chopper (version)
 3. **Alignment**:
    - Alignment: minimap2 (version)
-   - File conversion: SAMtools (version)
+   - File conversion: SAMtools (v1.22.)
 4. **Variant calling and Benchmarking**
 
 | Tool        | Variant type detection | 

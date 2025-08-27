@@ -24,7 +24,7 @@ The aim of this project is to systematically evaluate and compare different vari
    - Filtering: Chopper (version)
 3. **Alignment**:
    - Alignment: minimap2 (version)
-   - File conversion: SAMtools (v1.22.)
+   - File conversion: SAMtools (v1.22.1)
 4. **Variant calling and Benchmarking**
 
 | Tool        | Variant type detection | 

@@ -7,3 +7,10 @@ This repository contains the code, workflows, and notes for my thesis project:
 The aim of this project is to systematically evaluate and compare different variant calling and annotation tools on simulated targeted long-read sequencing datasets, in order to identify reliable and efficient tools for accurate variant detection and functional interpretation.
 
 ---
+
+## Workflow design
+1. **Data simulation**
+2. **Preprocessing**
+3. **Alignment**
+4. **Variant calling and Benchmarking**
+5. **Functional annotation and Benchmarking**

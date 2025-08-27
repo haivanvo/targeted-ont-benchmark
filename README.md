@@ -14,3 +14,41 @@ The aim of this project is to systematically evaluate and compare different vari
 3. **Alignment**
 4. **Variant calling and Benchmarking**
 5. **Functional annotation and Benchmarking**
+
+---
+
+## Tools and dependencies
+1. **Data simulation**: SimuG (citation), NanoSim (citation).
+2. **Preprocessing**:
+   - QC: NanoStat (citation)
+   - Filtering: Chopper (citation)
+3. **Alignment**:
+   - Alignment: minimap2 (citation)
+   - File conversion: SAMtools (citation)
+4. **Variant calling and Benchmarking**
+| Tool                        | Variant type detection | 
+|-----------------------------|--------------------|
+| DeepVariant (version)       |            
+   ## Tool Compatibility
+
+| Category         | Tool        | macOS ARM (native) | Docker / HPC required | Notes |
+|------------------|-------------|--------------------|------------------------|-------|
+| **Simulation**   | SimuG       | ✅ Yes             | ❌ No                  | Python package (pip install) |
+|                  | NanoSim     | ✅ Yes             | ❌ No                  | Needs R installed |
+| **QC / Preproc** | NanoStat    | ✅ Yes             | ❌ No                  | Python package |
+|                  | Chopper     | ⚠️ Partial         | ❌ No (build from source) | Rust-based, may need manual build |
+| **Alignment**    | minimap2    | ✅ Yes             | ❌ No                  | Install via Homebrew |
+|                  | SAMtools    | ✅ Yes             | ❌ No                  | Install via Homebrew |
+| **Variant Calling** | Sniffles2 | ✅ Yes             | ❌ No                  | Python package |
+|                  | cuteSV      | ✅ Yes             | ❌ No                  | Python package |
+|                  | DeepVariant | ❌ No              | ✅ Yes                 | Linux/x86 only, run via Docker/HPC |
+| **Benchmarking** | Truvari     | ✅ Yes             | ❌ No                  | Python package |
+|                  | hap.py      | ❌ No              | ✅ Yes                 | Linux/x86 only, run via Docker/HPC |
+| **Annotation**   | SnpEff      | ✅ Yes             | ❌ No                  | Java-based |
+|                  | VEP         | ✅ Yes             | ❌ No                  | Perl + dependencies (Bioperl, cache) |
+|                  | ANNOVAR     | ✅ Yes             | ❌ No                  | Perl scripts |
+|                  | AnnotSV     | ✅ Yes             | ❌ No                  | Python + Perl |
+|                  | nanotatoR   | ✅ Yes             | ❌ No                  | R package |
+
+
+

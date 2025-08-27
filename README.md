@@ -18,17 +18,38 @@ The aim of this project is to systematically evaluate and compare different vari
 ---
 
 ## Tools and dependencies
-1. **Data simulation**: SimuG (citation), NanoSim (citation).
+1. **Data simulation**: SimuG (version), NanoSim (version).
 2. **Preprocessing**:
-   - QC: NanoStat (citation)
-   - Filtering: Chopper (citation)
+   - QC: NanoStat (version)
+   - Filtering: Chopper (version)
 3. **Alignment**:
-   - Alignment: minimap2 (citation)
-   - File conversion: SAMtools (citation)
+   - Alignment: minimap2 (version)
+   - File conversion: SAMtools (version)
 4. **Variant calling and Benchmarking**
-| Tool                        | Variant type detection | 
-|-----------------------------|--------------------|
-| DeepVariant (version)       |            
+
+| Tool        | Variant type detection | 
+|-------------|-----------|
+| cuteSV    | SVs        | 
+| Sniffles2    | SVs       | 
+| DeepVariant | SNVs, indels        | 
+| Clair3 | SNVs, indels |
+| FreeBayes | SNVs, indels |
+
+Benchmarking tools:
+- SNVs, indels callers: hap.py (version)
+- SVs: Truvari (version)
+Visualization: R (version)
+5. **Functional annotation and Benchmarking**
+
+| Tool        | Variant type detection | Annotation database |
+|-------------|-----------|----------------------------------|
+| NanotatoR    | SVs        | DGV, ClinGen, DECIPHER |
+| AnnotSV    | SVs       | DGV, ClinGen, DECIPHER |
+| SnpEff | SNVs, indels        | ENSEMBL |
+| VEP (Variant Effect Predictor) | SNVs, indels | ENSEMBL |
+| ANNOVAR (ANNOtation VARiation) | SNVs, indels | ClinVar, dbSNP, gnomAD, CADD (via UCSC Genome Browser) |
+
+
    ## Tool Compatibility
 
 | Category         | Tool        | macOS ARM (native) | Docker / HPC required | Notes |

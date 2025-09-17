@@ -3,8 +3,10 @@
 ## Extract exon coordinates 
 Using bedtools, extract fasta with selected exon coordinates from reference genome full assembly.
 
-'''<Bash script>'''
-bedtools getfasta /Users/haivanvo/THESIS/exons.bed /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa 
+```bash
+bedtools getfasta \
+  -bed /Users/haivanvo/THESIS/exons.bed \
+  -fi /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa 
 
 
 

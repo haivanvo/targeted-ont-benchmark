@@ -10,17 +10,20 @@ The aim of this project is to systematically evaluate and compare different vari
 
 ## Workflow design
 1. **Data simulation**
-## Extract exon coordinates 
+### Extract exon coordinates 
 Using bedtools, extract fasta with selected exon coordinates from reference genome full assembly.
 
 ```bash
 bedtools getfasta \
   -bed /Users/haivanvo/THESIS/exons.bed \
-  -fi /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa  
-3. **Preprocessing**
-4. **Alignment**
-5. **Variant calling and Benchmarking**
-6. **Functional annotation and Benchmarking**
+  -fi /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+```
+
+  
+2. **Preprocessing**
+3. **Alignment**
+4. **Variant calling and Benchmarking**
+5. **Functional annotation and Benchmarking**
 
 ---
 

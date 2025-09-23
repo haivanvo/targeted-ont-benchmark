@@ -17,12 +17,52 @@ Using bedtools, extract fasta with selected exon coordinates from reference geno
 bedtools getfasta \
   -bed /Users/haivanvo/THESIS/exons.bed \
   -fi /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+  -fo /Users/haivanvo/THESIS/exons_extract.fa
+```
+```bash
+perl simuG.pl \
+  -r exons_extract.fa \
+  -s 1768181897 \
+	-snp_count 30000
+```
+Generate variants simultaneously, then:
+```bash
+python /Users/haivanvo/NanoSim/src/simulator.py genome \
+ -rg /Users/haivanvo/simuG/FASTA/variants_merged.fa \
+ --seed 42 -o /Users/haivanvo/1_20kb \
+ --coverage 500 \
+ --model_prefix /Users/haivanvo/NanoSim/pre-trained_models/human_giab_hg002_sub1M_kitv14_dorado_v3.2.1/training \
+ --fastq \
+ -s 0.5 \
+ -t 4 \
+ --max_len 20000 \
+ --min_len 1000
 ```
 
-  
 2. **Preprocessing**
-3. **Alignment**
+```bash
+NanoStat --fastq /Users/haivanvo/1_20kb_aligned_reads.fastq \
+	-o /Users/haivanvo/nanostat_report \
+	-n stats_report
+chopper -q 20 \
+	-l 1000 \
+	-i /Users/haivanvo/1_20kb_aligned_reads.fastq > chopper.fastq
+```
+
+3. **Alignment + Postprocessing**
+```bash
+minimap2 -a -x map-ont /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa chopper.fastq \
+	-t 3 > minimap2_output.sam
+samtools view -b minimap2_output.sam -o minimap2_output.bam
+samtools index minimap2_output.sorted.bam
+```
+
 4. **Variant calling and Benchmarking**
+```bash
+
+```
+
+
 5. **Functional annotation and Benchmarking**
 
 ---

@@ -64,12 +64,12 @@ Benchmarking tools:
 Visualization: R (version)
 5. **Functional annotation and Benchmarking**
 
-| Tool        | Variant type detection | Annotation database |
-|-------------|-----------|----------------------------------|
-| AnnotSV    | SVs       | DGV, ClinGen, DECIPHER |
-| SnpEff | SNVs, indels        | ENSEMBL |
-| VEP (Variant Effect Predictor) | SNVs, indels | ENSEMBL |
-| ANNOVAR (ANNOtation VARiation) | SNVs, indels | ClinVar, dbSNP, gnomAD, CADD (via UCSC Genome Browser) |
+| Tool        | Variant type detection | 
+|-------------|-----------|
+| AnnotSV    | SVs       | 
+| SnpEff | SNVs, indels        | 
+| VEP (Variant Effect Predictor) | 
+| ANNOVAR (ANNOtation VARiation) | 
 
 
 

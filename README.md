@@ -11,8 +11,10 @@ The aim of this project is to systematically evaluate and compare different vari
 
 ## Workflow design
 1. **Data acquisition**
+See "Data"
 
-2. **Preprocessing**
+3. **Preprocessing**
+See "Preprocessing & Alignment"
 ```bash
 NanoStat --fastq /Users/data.fastq \
 	-o /Users/haivanvo/nanostat_report \
@@ -23,6 +25,7 @@ chopper -q 20 \
 ```
 
 3. **Alignment + Post-alignment**
+See "Preprocessing & Alignment"
 ```bash
 minimap2 -a -x map-ont /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa chopper.fastq \
 	-t 3 > minimap2_output.sam
@@ -40,8 +43,8 @@ samtools index minimap2_output.sorted.bam
 
 ---
 
-## Tools and dependencies
-1. **Data simulation**: SimuG (version), NanoSim (version), BEDtools (v2.31.1).
+## Materials
+1. **Data acquisition**
 2. **Preprocessing**:
    - QC: NanoStat (version)
    - Filtering: Chopper (version)

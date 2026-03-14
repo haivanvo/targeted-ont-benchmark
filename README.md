@@ -66,7 +66,6 @@ Visualization: R (version)
 
 | Tool        | Variant type detection | Annotation database |
 |-------------|-----------|----------------------------------|
-| NanotatoR    | SVs        | DGV, ClinGen, DECIPHER |
 | AnnotSV    | SVs       | DGV, ClinGen, DECIPHER |
 | SnpEff | SNVs, indels        | ENSEMBL |
 | VEP (Variant Effect Predictor) | SNVs, indels | ENSEMBL |

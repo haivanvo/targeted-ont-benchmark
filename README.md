@@ -10,6 +10,7 @@ The aim of this project is to systematically evaluate and compare different vari
 ---
 
 ## Workflow design
+
 1. **Data acquisition**
 2. **QC**
 
@@ -26,7 +27,7 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
 5. **Variant calling and Benchmarking**
 - Variant callers:
 
-| Tool        | Variant type detection | Parameters/Model |
+| Tool        | Variant type detection | Parameters/Model (can change based on data use) |
 |-------------|-----------|-----------|
 | cuteSV    | SVs        | --max_cluster_bias_INS 100 --diff_ratio_merging_INS 0.3 --max_cluster_bias_DEL 100 --diff_ratio_merging_DEL 0.3 |
 | Sniffles2    | SVs       | Default |
@@ -34,45 +35,29 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
 | Clair3 | SNVs, indels | --platform=ont, model: r941_prom_sup_g5014 |
 | FreeBayes | SNVs, indels | Default |
 
+(Although the dataset I used was sequencing in R9 flowcell, the choice of using DeepVariant with R10 model was deliberate. If you want to use R9 model on DeepVariant, better check the PEPPER-Margin-DeepVariant).
+
 - Truth set (Note that for HG001 sample, there wasn't a relevant SV truth set):
   + GIAB truth set
-    https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/
-    https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/
-    https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/NIST_SV_v0.6/
     
-  + Targeted BED panel (https://github.com/HKU-BAL/ECNano/blob/main/bed/mes_with_gene.hg38_nochr.bed) to intersect with GIAB truth set 
+    HG001: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/
+    
+    HG002: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/NIST_SV_v0.6/
+    
+    HG002 (SV): https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/CMRG_v1.00/GRCh38/StructuralVariant/
+    
+  + Targeted BED panel (https://github.com/HKU-BAL/ECNano/blob/main/bed/mes_with_gene.hg38_nochr.bed) to intersect with GIAB truth set
+ 
+- Metrics: F1-score, Precision, Recall.
+  
+- Benchmarking tools: RTG vcfeval (for SNV/Indel callers), Truvari (for SV callers)
+ 
 6. **Functional annotation and Benchmarking**
+- Annotation software: VEP, ANNOVAR, AnnotSV, SnpEff
 
----
-
-## Materials
-1. **Data acquisition**
-
-
-2. **Preprocessing**:
-   - QC: NanoStat (v1.46.1)
-   - Filtering: Chopper (v0.10.0)
-3. **Alignment**:
-   - Alignment: minimap2 (v2.30-r1287)
-   - File conversion: SAMtools (v1.22.1)
-4. **Variant calling and Benchmarking**
-
-
-
-Benchmarking tools:
-- SNVs, indels callers: hap.py (version)
-- SVs: Truvari (version)
-Visualization: R (version)
-5. **Functional annotation and Benchmarking**
-
-| Tool        | Variant type detection | 
-|-------------|-----------|
-| AnnotSV    | SVs       | 
-| SnpEff | SNVs, indels        | 
-| VEP (Variant Effect Predictor) | 
-| ANNOVAR (ANNOtation VARiation) | 
-
-
+- Benchmarking method: Comparative analysis among 4 softwares
+  + SNVs and Indel consequence concordance: For small variants, the performance of VEP, SnpEff, and ANNOVAR was assessed by comparing the distribution of predicted functional consequences. The analysis aimed to evaluate the consistency of nomenclature and classification across different databases. AnnotSV was not included in this benchmarking approach since the tool was designed for SV annotation only.
+  + SV gene-level consensus: Due to the complexity of the variants, a multi-tool concordance analysis including AnnotSV was performed. The evaluation focused on the level of agreement among all four tools in identifying SVs within a prioritized list of clinically relevant genes.
 
 
 

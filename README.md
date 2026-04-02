@@ -11,32 +11,37 @@ The aim of this project is to systematically evaluate and compare different vari
 
 ## Workflow design
 1. **Data acquisition**
+2. **QC**
 
-2. **Preprocessing**
-```bash
-NanoStat --fastq /Users/data.fastq \
-	-o /Users/haivanvo/nanostat_report \
-	-n stats_report
-chopper -q 20 \
-	-l 1000 \
-	-i /Users/haivanvo/data.fastq > chopper.fastq
-```
+Used NanoStat (v1.46.1) to assess the quality of reads.
 
-3. **Alignment + Post-alignment**
-```bash
-minimap2 -a -x map-ont /Users/haivanvo/THESIS/Homo_sapiens.GRCh38.dna.primary_assembly.fa chopper.fastq \
-	-t 3 > minimap2_output.sam
-samtools view -b minimap2_output.sam -o minimap2_output.bam
-samtools index minimap2_output.sorted.bam
-```
+3. **Preprocessing**
 
-4. **Variant calling and Benchmarking**
-```bash
+Used Chopper (v0.10.0) to filter low-quality reads.
 
-```
+4. **Alignment**
 
+Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to convert SAM -> BAM for variant calling.
 
-5. **Functional annotation and Benchmarking**
+5. **Variant calling and Benchmarking**
+- Variant callers:
+
+| Tool        | Variant type detection | Parameters/Model |
+|-------------|-----------|-----------|
+| cuteSV    | SVs        | --max_cluster_bias_INS 100 --diff_ratio_merging_INS 0.3 --max_cluster_bias_DEL 100 --diff_ratio_merging_DEL 0.3 |
+| Sniffles2    | SVs       | Default |
+| DeepVariant | SNVs, indels        | --model_type=ONT_R104 |
+| Clair3 | SNVs, indels | --platform=ont, model: r941_prom_sup_g5014 |
+| FreeBayes | SNVs, indels | Default |
+
+- Truth set (Note that for HG001 sample, there wasn't a relevant SV truth set):
+  + GIAB truth set
+    https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/
+    https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/
+    https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/NIST_SV_v0.6/
+    
+  + Targeted BED panel (https://github.com/HKU-BAL/ECNano/blob/main/bed/mes_with_gene.hg38_nochr.bed) to intersect with GIAB truth set 
+6. **Functional annotation and Benchmarking**
 
 ---
 
@@ -52,13 +57,7 @@ samtools index minimap2_output.sorted.bam
    - File conversion: SAMtools (v1.22.1)
 4. **Variant calling and Benchmarking**
 
-| Tool        | Variant type detection | 
-|-------------|-----------|
-| cuteSV    | SVs        | 
-| Sniffles2    | SVs       | 
-| DeepVariant | SNVs, indels        | 
-| Clair3 | SNVs, indels |
-| FreeBayes | SNVs, indels |
+
 
 Benchmarking tools:
 - SNVs, indels callers: hap.py (version)

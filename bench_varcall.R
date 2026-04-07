@@ -8,7 +8,7 @@ library(readr)
 clair3cpu <- read_table("data/HG001_SNV_intersect_benchmark/benchmark_clair3cpu/summary.txt", comment = "-"))
 clair3gpu <- read_table("data/HG001_SNV_intersect_benchmark/benchmark_clair3gpu/summary.txt", comment = "-")) 
 deepvarcpu <- read_table("data/HG001_SNV_intersect_benchmark/benchmark_deepvarcpu/summary.txt", comment = "-"))
-deepvargpu <- read_table(""data/HG001_SNV_intersect_benchmark/benchmark_deepvargpu/summary.txt", comment = "-"))
+deepvargpu <- read_table("data/HG001_SNV_intersect_benchmark/benchmark_deepvargpu/summary.txt", comment = "-"))
 freebayes <- read_table("data/HG001_SNV_intersect_benchmark/benchmark_freebayes/summary.txt", comment = "-"))
 
 # Rename columns to fit

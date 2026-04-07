@@ -59,6 +59,16 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
   + SNVs and Indel consequence concordance: For small variants, the performance of VEP, SnpEff, and ANNOVAR was assessed by comparing the distribution of predicted functional consequences. The analysis aimed to evaluate the consistency of nomenclature and classification across different databases. AnnotSV was not included in this benchmarking approach since the tool was designed for SV annotation only.
   + SV gene-level consensus: Due to the complexity of the variants, a multi-tool concordance analysis including AnnotSV was performed. The evaluation focused on the level of agreement among all four tools in identifying SVs within a prioritized list of clinically relevant genes.
 
+---
+
+## Results
+
+<img width="4200" height="2100" alt="HG001_SNV_benchmark" src="https://github.com/user-attachments/assets/b26631e4-6b7d-4ac8-8e08-1dd32030b24c" />
+
+<img width="3300" height="2100" alt="annotation_consequences_default" src="https://github.com/user-attachments/assets/4faa981b-8473-4ead-8dd2-8f0f490769d3" />
+
+<img width="1050" height="1044" alt="concordance_SV" src="https://github.com/user-attachments/assets/6e98c8f8-46f2-4482-9a75-9421781bb648" />
+
 
 
 

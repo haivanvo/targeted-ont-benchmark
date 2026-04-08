@@ -8,7 +8,7 @@ singularity exec \
   /opt/deepvariant/bin/run_deepvariant \
   --model_type=ONT_R104 \
   --ref=/input/GRCh38_no_alt_analysis_set.fasta \
-  --reads=/input/HG001.bam \ 
+  --reads=/input/HG001.bam \ # Make sure BAM is mapped and indexed
   --output_vcf=/input/output_dv/HG001.vcf.gz \
   --num_shards=16 \
   --intermediate_results_dir /input/output_dv/tmpHG001

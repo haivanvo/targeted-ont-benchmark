@@ -35,7 +35,7 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
 | Clair3 | SNVs, indels | --platform=ont, model: r941_prom_sup_g5014 |
 | FreeBayes | SNVs, indels | Default |
 
-(Although the dataset I used was sequencing in R9 flowcell, the choice of using DeepVariant with R10 model was deliberate. If you want to use R9 model on DeepVariant, better check the PEPPER-Margin-DeepVariant).
+(Since DeepVariant didn't support R9 model, I used R10 model for my R9 dataset instead, therefore, the accuracy was affected. To use R9 model, we can use PEPPER-Margin-DeepVariant, though this tool wasn't supported by Google so I didn't include in my thesis).
 
 - Truth set (Note that for HG001 sample, there wasn't a relevant SV truth set):
   + GIAB truth set

@@ -61,13 +61,6 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
 
 ---
 
-## Results
-
-<img width="4200" height="2100" alt="HG001_SNV_benchmark" src="https://github.com/user-attachments/assets/b26631e4-6b7d-4ac8-8e08-1dd32030b24c" />
-
-<img width="3300" height="2100" alt="annotation_consequences_default" src="https://github.com/user-attachments/assets/4faa981b-8473-4ead-8dd2-8f0f490769d3" />
-
-<img width="1050" height="1044" alt="concordance_SV" src="https://github.com/user-attachments/assets/6e98c8f8-46f2-4482-9a75-9421781bb648" />
 
 
 

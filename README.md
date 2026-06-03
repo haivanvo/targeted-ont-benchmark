@@ -1,4 +1,4 @@
-# ONT Variant Calling and Annotation Benchmark
+# Targeted ONT Variant Calling and Annotation Benchmark
 
 ## Overview  
 This repository contains the code, workflows, and notes for my thesis project:  

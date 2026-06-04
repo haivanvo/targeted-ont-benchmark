@@ -27,13 +27,13 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
 5. **Variant calling and Benchmarking**
 - Variant callers:
 
-| Tool        | Variant type detection | Parameters/Model (can change based on data use) |
-|-------------|-----------|-----------|
-| cuteSV    | SVs        | --max_cluster_bias_INS 100 --diff_ratio_merging_INS 0.3 --max_cluster_bias_DEL 100 --diff_ratio_merging_DEL 0.3 |
-| Sniffles2    | SVs       | Default |
-| DeepVariant | SNVs, indels        | --model_type=ONT_R104 |
-| Clair3 | SNVs, indels | --platform=ont, model: r941_prom_sup_g5014 |
-| FreeBayes | SNVs, indels | Default |
+| Tool        | Variant type detection | 
+|-------------|-----------|
+| cuteSV    | SVs        | 
+| Sniffles2    | SVs       | 
+| DeepVariant | SNVs, indels        | 
+| Clair3 | SNVs, indels | 
+| FreeBayes | SNVs, indels | 
 
 (Since DeepVariant didn't support R9 model, I used R10 model for my R9 dataset instead, therefore, the accuracy was affected. To use R9 model, we can use PEPPER-Margin-DeepVariant, though this tool wasn't supported by Google so I didn't include in my thesis).
 
@@ -56,9 +56,7 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
 - Annotation software: VEP, ANNOVAR, AnnotSV, SnpEff
 
 - Benchmarking method: Comparative analysis among 4 softwares
-  + SNVs and Indel consequence concordance: For small variants, the performance of VEP, SnpEff, and ANNOVAR was assessed by comparing the distribution of predicted functional consequences. The analysis aimed to evaluate the consistency of nomenclature and classification across different databases. AnnotSV was not included in this benchmarking approach since the tool was designed for SV annotation only.
-  + SV gene-level consensus: Due to the complexity of the variants, a multi-tool concordance analysis including AnnotSV was performed. The evaluation focused on the level of agreement among all four tools in identifying SVs within a prioritized list of clinically relevant genes.
-
+  
 ---
 
 

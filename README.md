@@ -1,4 +1,6 @@
-# Targeted ONT Variant Calling and Annotation Benchmark ݁ 𐔌՞ ܸ.ˬ.ܸ՞𐦯
+# Targeted ONT Variant Calling and Annotation Benchmark ݁ 
+
+Note: Full implementation is withheld pending publication. This README includes the methodology and workflow only.
 
 ## Overview  
 This repository currently serves an overview and workflow documentation of my bachelor thesis project:

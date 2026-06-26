@@ -13,6 +13,10 @@ The aim of this project is to systematically evaluate and compare different vari
 
 ## Workflow design
 
+<img width="2993" height="7545" alt="Thesis_workflow" src="https://github.com/user-attachments/assets/f955f820-e73e-47b9-98a2-375a9dbcc198" />
+
+
+
 1. **Data acquisition**
 
 My thesis project specifically used the HG001 (ERR8578834) and HG002 (ERR8578835) sequencing runs provided in NCBI database, under the accession number of PRJEB50895. The data was originally published by Leung et al. (2022) under the title "ECNano: A cost-effective workflow for target enrichment sequencing and accurate variant calling on 4800 clinically significant genes using a single MinION flowcell)".

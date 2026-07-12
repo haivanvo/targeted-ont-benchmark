@@ -13,7 +13,9 @@ The aim of this project is to systematically evaluate and compare different vari
 
 ## Workflow design
 
-<img width="2993" height="7545" alt="Thesis_workflow" src="https://github.com/user-attachments/assets/f955f820-e73e-47b9-98a2-375a9dbcc198" />
+<img width="2316" height="8192" alt="Thesis Workflow" src="https://github.com/user-attachments/assets/741a73a3-c34f-4207-855f-8e8999a561ae" />
+
+
 
 
 

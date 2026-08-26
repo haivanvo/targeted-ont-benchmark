@@ -1,5 +1,5 @@
 # Central configuration for the variant calling & annotation benchmarking pipeline.
-# All workflow scripts should read parameters from here rather than hardcoding values.
+# All workflow scripts should read parameters from here.
 
 reference:
   build: GRCh38
@@ -83,7 +83,7 @@ compute:
     os: Ubuntu 20.04.6 LTS
     gpu: NVIDIA GeForce RTX 3060
     cpu_cores: 56
-    used_for: [DeepVariant]
+    used_for: [DeepVariant, Clair3]
   cpu_env:
     os: macOS Sequoia 15.7.3
     chip: Apple M4

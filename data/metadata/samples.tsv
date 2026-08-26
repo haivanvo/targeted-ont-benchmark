@@ -1,0 +1,3 @@
+sample_id	accession	bioproject	library_name	platform	strategy	layout	source_name	date_published
+HG001	ERR8578834	PRJEB50895	SQK-LSK109	Oxford Nanopore	Targeted-Capture	Single-end	NA12878	2022-02-16
+HG002	ERR8578835	PRJEB50895	SQK-LSK109	Oxford Nanopore	Targeted-Capture	Single-end	NA24385	2022-02-16

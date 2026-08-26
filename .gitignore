@@ -1,0 +1,23 @@
+# Raw & intermediate sequencing data (too large for git)
+data/raw/
+data/processed/
+data/aligned/
+data/reference/*.fa
+data/reference/*.fa.fai
+data/reference/*.sdf/
+data/reference/truth_sets/
+
+# Variant calls / large intermediate outputs
+results/variant_calls/
+results/benchmarking/*/*_vcfeval/
+results/benchmarking/*/*_truvari/
+
+# System / editor files
+.DS_Store
+.Rhistory
+.Rproj.user/
+__pycache__/
+*.pyc
+
+# Singularity/container images
+*.sif

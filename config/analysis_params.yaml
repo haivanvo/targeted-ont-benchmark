@@ -1,0 +1,91 @@
+# Central configuration for the variant calling & annotation benchmarking pipeline.
+# All workflow scripts should read parameters from here rather than hardcoding values.
+
+reference:
+  build: GRCh38
+  fasta: data/reference/GRCh38.fa
+  target_bed: data/reference/mes_with_gene.hg38_nochr.bed
+
+samples:
+  - id: HG001
+    accession: ERR8578834
+    truth_set_snv_indel: GIAB_v4.2.1
+    truth_set_sv: null   # not available for HG001
+  - id: HG002
+    accession: ERR8578835
+    truth_set_snv_indel: GIAB_v4.2.1
+    truth_set_sv: GIAB_CMRG_v1.0
+
+preprocessing:
+  qc_tool: NanoStat
+  qc_version: 1.46.1
+  filter_tool: Chopper
+  filter_version: 0.10.0
+  min_quality: 20
+  min_length: 500
+
+alignment:
+  tool: minimap2
+  version: 2.30-r1287
+  preset: map-ont
+  sort_index: samtools_1.21
+
+variant_calling:
+  snv_indel:
+    - name: Clair3
+      version: 1.2.0
+      platform: ont
+      model: r941_prom_sup_g5014
+    - name: DeepVariant
+      version: 1.6.1
+      model_type: ONT_R104
+    - name: FreeBayes
+      version: 1.3.10
+      params: default
+  sv:
+    - name: cuteSV
+      version: 1.0.8
+      params:
+        max_cluster_bias_INS: 100
+        diff_ratio_merging_INS: 0.3
+        max_cluster_bias_DEL: 100
+        diff_ratio_merging_DEL: 0.3
+    - name: Sniffles2
+      version: 2.6.3
+      params: default
+
+benchmarking:
+  normalization: bcftools_1.21
+  snv_indel_tool: RTG_vcfeval_3.13
+  sv_tool: Truvari_4.0.0
+
+annotation:
+  - name: SnpEff
+    version: 5.4a
+    genome: hg38
+  - name: VEP
+    version: 115.2
+    assembly: GRCh38
+  - name: ANNOVAR
+    version: 2022-08-02
+    buildver: hg38
+  - name: AnnotSV
+    version: 3.5.5
+    genome_build: GRCh38
+
+excluded_tools:
+  - name: nanotatoR
+    version: 1.20.1
+    reason: "Requires SMAP input; no reliable VCF-to-SMAP conversion without disrupting variant metadata"
+
+compute:
+  gpu_env:
+    os: Ubuntu 20.04.6 LTS
+    gpu: NVIDIA GeForce RTX 3060
+    cpu_cores: 56
+    used_for: [DeepVariant]
+  cpu_env:
+    os: macOS Sequoia 15.7.3
+    chip: Apple M4
+    ram_gb: 16
+    used_for: [preprocessing, alignment, Clair3, FreeBayes, cuteSV, Sniffles2, benchmarking, annotation]

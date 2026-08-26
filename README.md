@@ -1,19 +1,16 @@
-# Benchmarking Variant Calling and Functional Annotation Tools on Targeted Nanopore Long-Read Data
+# Targeted ONT Variant Calling and Annotation Benchmark ݁ 
 
-B.S. Biotechnology thesis — School of Biotechnology, International University (VNU-HCMC)
+Note: Full implementation is withheld pending publication. This README includes the methodology and workflow only.
 
-> Evaluates SNV/Indel and structural variant (SV) callers, plus four functional annotation tools, on ONT targeted (medical exome) long-read sequencing data.
+---
 
-## Summary
+## Overview  
+This repository currently serves an overview and workflow documentation of my bachelor thesis project:
+**“Benchmarking variant calling and functional annotation tools on targeted Nanopore long-read  data.”** conducted by Vo Hai Van, under the supervision of Dr. Le Minh Thong, School of Biotechnology, International University (Vietnam National University HCMC).
 
-This repository contains the full analysis pipeline, configuration, and code used to benchmark:
-- **SNV/Indel callers:** Clair3, DeepVariant, FreeBayes
-- **SV callers:** cuteSV, Sniffles2
-- **Annotation tools:** VEP, SnpEff, ANNOVAR, AnnotSV
+The aim of this project is to systematically evaluate and compare different variant calling and annotation tools on a simulated targeted long-read sequencing dataset based on Nanopore error profiles, in order to identify reliable and efficient tools for accurate variant detection and functional interpretation.
 
-on two GIAB reference samples (HG001/NA12878, HG002/NA24385) sequenced with ONT targeted capture (SQK-LSK109, MinION).
-
-**Key finding:** Clair3 (precision >95%) was the best-performing SNV/Indel caller; cuteSV outperformed Sniffles2 for SV detection. Annotation tools showed strong gene-level concordance but disagreed on specific functional consequence calls for the same variant, largely due to transcript database version differences.
+---
 
 ## Repository structure
 
@@ -41,50 +38,68 @@ on two GIAB reference samples (HG001/NA12878, HG002/NA24385) sequenced with ONT 
 └── LICENSE
 ```
 
-## Reproducing the pipeline
 
-```bash
-# 1. Clone and set up environment
-git clone https://github.com/<your-username>/nanopore-variant-benchmark.git
-cd nanopore-variant-benchmark
-conda env create -f environment.yml
-conda activate nanopore-benchmark
+---
 
-# 2. Fetch data (see data/README.md for accessions)
-bash workflow/01_preprocessing/00_download_sra.sh
+## Workflow design
 
-# 3. Run the pipeline end-to-end
-bash workflow/01_preprocessing/run_qc_filter.sh
-bash workflow/02_alignment/run_minimap2.sh
-bash workflow/03_variant_calling/run_all_callers.sh
-bash workflow/04_benchmarking/run_benchmarking.sh
-bash workflow/05_annotation/run_all_annotators.sh
-Rscript workflow/06_analysis/generate_figures.R
-```
+<img width="2316" height="8192" alt="Thesis Workflow" src="https://github.com/user-attachments/assets/741a73a3-c34f-4207-855f-8e8999a561ae" />
 
-Each stage's scripts read shared parameters from `config/analysis_params.yaml`, so tool versions/models only need to be changed in one place.
 
-## Data
 
-| Sample | Accession | Platform | Kit |
-|---|---|---|---|
-| HG001 (NA12878) | ERR8578834 | ONT MinION | SQK-LSK109 |
-| HG002 (NA24385) | ERR8578835 | ONT MinION | SQK-LSK109 |
 
-Source: NCBI SRA, BioProject [PRJEB50895](https://www.ncbi.nlm.nih.gov/bioproject/PRJEB50895) (Leung et al., 2022). See `data/metadata/samples.tsv`.
+1. **Data acquisition**
 
-Targeted BED file: [ECNano `mes_with_gene.hg38_nochr.bed`](https://github.com/HKU-BAL/ECNano/blob/main/bed/mes_with_gene.hg38_nochr.bed)
+My thesis project specifically used the HG001 (ERR8578834) and HG002 (ERR8578835) sequencing runs provided in NCBI database, under the accession number of PRJEB50895. The data was originally published by Leung et al. (2022) under the title "ECNano: A cost-effective workflow for target enrichment sequencing and accurate variant calling on 4800 clinically significant genes using a single MinION flowcell)".
 
-Ground truth: GIAB high-confidence calls v4.2.1 (SNV/Indel); GIAB CMRG v1.0 (SV, HG002 only).
+2. **QC**
 
-## Tool versions
+Used NanoStat (v1.46.1) to assess the quality of reads.
 
-See `config/analysis_params.yaml` and `environment.yml` for the exact pinned versions used (Clair3 v1.2.0, DeepVariant v1.6.1, FreeBayes v1.3.10, cuteSV v1.0.8, Sniffles2 v2.6.3, VEP v115.2, SnpEff v5.4a, ANNOVAR 2022-08-02, AnnotSV v3.5.5).
+3. **Preprocessing**
 
-## Citation
+Used Chopper (v0.10.0) to filter low-quality reads.
 
-If you use this pipeline, please cite the thesis (see `CITATION.cff`).
+4. **Alignment**
 
-## License
+Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to convert SAM -> BAM for variant calling.
 
-MIT — see `LICENSE`. Reference data (GIAB, SRA) retains its original licensing/attribution terms.
+5. **Variant calling and Benchmarking**
+- Variant callers:
+
+| Tool        | Variant type detection | 
+|-------------|-----------|
+| cuteSV    | SVs        | 
+| Sniffles2    | SVs       | 
+| DeepVariant | SNVs, indels        | 
+| Clair3 | SNVs, indels | 
+| FreeBayes | SNVs, indels | 
+
+(Since DeepVariant didn't support R9 model, I used R10 model for my R9 dataset instead, therefore, the accuracy was affected. To use R9 model, we can use PEPPER-Margin-DeepVariant, though this tool wasn't supported by Google so I didn't include in my thesis).
+
+- Truth set (Note that for HG001 sample, there wasn't a relevant SV truth set):
+  + GIAB truth set
+    
+    HG001: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/NISTv4.2.1/GRCh38/
+    
+    HG002: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/NIST_SV_v0.6/
+    
+    HG002 (SV): https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/AshkenazimTrio/HG002_NA24385_son/CMRG_v1.00/GRCh38/StructuralVariant/
+    
+  + Targeted BED panel (https://github.com/HKU-BAL/ECNano/blob/main/bed/mes_with_gene.hg38_nochr.bed) to intersect with GIAB truth set
+ 
+- Metrics: F1-score, Precision, Recall.
+  
+- Benchmarking tools: RTG vcfeval (for SNV/Indel callers), Truvari (for SV callers)
+ 
+6. **Functional annotation and Benchmarking**
+- Annotation software: VEP, ANNOVAR, AnnotSV, SnpEff
+
+- Benchmarking method: Comparative analysis among 4 softwares
+  
+---
+
+
+
+
+

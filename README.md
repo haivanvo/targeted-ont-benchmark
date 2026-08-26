@@ -29,7 +29,6 @@ The aim of this project is to systematically evaluate and compare different vari
 │   ├── qc/                   # NanoPlot reports, alignment stats
 │   ├── benchmarking/         # Precision/Recall/F1 tables (TP/FP/FN)
 │   └── figures/              # Final manuscript figures
-├── docs/                     # Extended methods notes, thesis alignment table
 ├── environment.yml           # Conda environment (tool versions pinned)
 ├── CITATION.cff
 └── LICENSE

@@ -23,4 +23,4 @@ dependencies:
   - annotsv=3.5.5
   - r-base=4.5.2
   - r-tidyverse
-  # DeepVariant (v1.6.1) is run via Singularity/Docker, not conda — see workflow/03_variant_calling/run_deepvariant.sh
+  # DeepVariant (v1.6.1) is run via Singularity/Docker, not conda => see workflow/03_variant_calling/run_deepvariant.sh

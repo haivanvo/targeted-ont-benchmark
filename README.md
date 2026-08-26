@@ -1,8 +1,5 @@
 # Targeted ONT Variant Calling and Annotation Benchmark ݁ 
 
-Note: Full implementation is withheld pending publication. This README includes the methodology and workflow only.
-
----
 
 ## Overview  
 This repository currently serves an overview and workflow documentation of my bachelor thesis project:
@@ -10,7 +7,7 @@ This repository currently serves an overview and workflow documentation of my ba
 
 The aim of this project is to systematically evaluate and compare different variant calling and annotation tools on a simulated targeted long-read sequencing dataset based on Nanopore error profiles, in order to identify reliable and efficient tools for accurate variant detection and functional interpretation.
 
----
+
 
 ## Repository structure
 
@@ -38,14 +35,9 @@ The aim of this project is to systematically evaluate and compare different vari
 └── LICENSE
 ```
 
-
----
-
 ## Workflow design
 
 <img width="2316" height="8192" alt="Thesis Workflow" src="https://github.com/user-attachments/assets/741a73a3-c34f-4207-855f-8e8999a561ae" />
-
-
 
 
 1. **Data acquisition**
@@ -97,7 +89,7 @@ Used minimap2 (v2.30-r1287) and GRCh38 reference genome for mapping, samtools to
 
 - Benchmarking method: Comparative analysis among 4 softwares
   
----
+
 
 
 

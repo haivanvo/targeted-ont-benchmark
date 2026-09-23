@@ -3,9 +3,9 @@
 
 ## Overview  
 This repository currently serves an overview and workflow documentation of my bachelor thesis project:
-**“Benchmarking variant calling and functional annotation tools on targeted Nanopore long-read  data.”** conducted by Vo Hai Van, under the supervision of Dr. Le Minh Thong, School of Biotechnology, International University (Vietnam National University HCMC).
+**“Benchmarking variant calling and functional annotation tools on targeted Nanopore long-read  data.”** conducted by Hai Van VO, under the supervision of Dr. Minh Thong LE, School of Biotechnology, International University (Vietnam National University HCMC).
 
-The aim of this project is to systematically evaluate and compare different variant calling and annotation tools on a simulated targeted long-read sequencing dataset based on Nanopore error profiles, in order to identify reliable and efficient tools for accurate variant detection and functional interpretation.
+The aim of this project is to systematically evaluate and compare different variant calling and annotation tools on a real targeted long-read sequencing dataset in order to identify reliable and efficient tools for accurate variant detection and functional annotation.
 
 
 

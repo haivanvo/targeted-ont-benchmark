@@ -41,7 +41,7 @@ The aim of this project is to systematically evaluate and compare different vari
 
 1. **Data acquisition**
 
-My thesis project specifically used the HG001 (ERR8578834) and HG002 (ERR8578835) sequencing runs provided in NCBI database, under the accession number of PRJEB50895. The data was originally published by Leung et al. in 2022. (DOI: 10.1186/s12920-022-01190-3)
+My thesis project specifically used the HG001 (ERR8578834) and HG002 (ERR8578835) sequencing runs provided in NCBI database, under the accession number of PRJEB50895. The data was originally published by Leung et al. in 2022. (DOI: [10.1186/s12920-022-01190-3]([url](https://pubmed.ncbi.nlm.nih.gov/35246132/)))
 
 2. **QC**
 
